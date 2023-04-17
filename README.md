@@ -41,4 +41,9 @@ Generate (sample) some text from a trained model with:
 
     ./scripts/generate.sh
 
+# Changed files
+
+- I changed the download_data script to download the adventures of Sherlock Holmes instead of the Tales and also adapted the splitting of the data a bit (leaving out 500 last lines to make sure that all training data is part of the book)
+- The train script has just the minor change that the file path for the data is changed, the hyperparameters are still the same.
+- In the generate script also only the file path of the data was changed.
 

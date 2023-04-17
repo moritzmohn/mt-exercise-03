@@ -20,24 +20,24 @@ done
 
 # download a different interesting data set!
 
-mkdir -p $data/grimm
+mkdir -p $data/doyle
 
-mkdir -p $data/grimm/raw
+mkdir -p $data/doyle/raw
 
-wget https://www.gutenberg.org/files/52521/52521-0.txt
-mv 52521-0.txt $data/grimm/raw/tales.txt
+wget https://www.gutenberg.org/files/1661/1661-0.txt
+mv 1661-0.txt $data/doyle/raw/adventures.txt
 
 # preprocess slightly
 
-cat $data/grimm/raw/tales.txt | python $base/scripts/preprocess_raw.py > $data/grimm/raw/tales.cleaned.txt
+cat $data/doyle/raw/adventures.txt | python $base/scripts/preprocess_raw.py > $data/doyle/raw/adventures.cleaned.txt
 
 # tokenize, fix vocabulary upper bound
 
-cat $data/grimm/raw/tales.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" --sent-tokenize > \
-    $data/grimm/raw/tales.preprocessed.txt
+cat $data/doyle/raw/adventures.cleaned.txt | python $base/scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" --sent-tokenize > \
+    $data/doyle/raw/adventures.preprocessed.txt
 
 # split into train, valid and test
 
-head -n 440 $data/grimm/raw/tales.preprocessed.txt | tail -n 400 > $data/grimm/valid.txt
-head -n 840 $data/grimm/raw/tales.preprocessed.txt | tail -n 400 > $data/grimm/test.txt
-tail -n 3075 $data/grimm/raw/tales.preprocessed.txt | head -n 2955 > $data/grimm/train.txt
+head -n 420 $data/doyle/raw/adventures.preprocessed.txt | tail -n 400 > $data/doyle/valid.txt
+head -n 840 $data/doyle/raw/adventures.preprocessed.txt | tail -n 400 > $data/doyle/test.txt
+tail -n 3500 $data/doyle/raw/adventures.preprocessed.txt | head -n 3000 > $data/doyle/train.txt

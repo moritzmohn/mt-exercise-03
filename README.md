@@ -54,4 +54,5 @@ Generate (sample) some text from a trained model with:
 - I added a table_creator.py file in the results folder which creates the tables and plots. It takes as input the log files. Example call (from the results folder): python3 table_creator.py --log_file0 dropout0.log --log_file02 dropout02.log --log_file04 dropout04.log --logfile06 dropout06.log --logfile08 dropout08.log
 - All the tables and plots are also saved in the results folder.
 - To output the samples with models model08.pt and model04.pt I adapted the script generate.sh.
+- I also added a copy of main.py to the results folder.
 

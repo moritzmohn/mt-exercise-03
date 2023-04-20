@@ -41,9 +41,17 @@ Generate (sample) some text from a trained model with:
 
     ./scripts/generate.sh
 
-# Changed files
+# Changed files part 1
 
 - I changed the download_data script to download the adventures of Sherlock Holmes instead of the Tales and also adapted the splitting of the data a bit (leaving out 500 last lines to make sure that all training data is part of the book)
-- The train script has just the minor change that the file path for the data is changed, the hyperparameters are still the same.
+- The train script has just the minor change that the file path for the data is changed, the hyperparameters are still the same, also I renamed it to train_original.
 - In the generate script also only the file path of the data was changed.
+
+# Changed files part 2
+
+- I adapted the train script everytime before I ran it to train a model with a certain dropout. More precisely I adapted always the name of the model (e.g. model02.pt for dropout 0.2), set the dropout e.g. to 0.2 and set the log_file flag e.g. to results/dropout02.log where the log files should be saved.
+- In the main.py file I added a log_file flag to the command line arguments which takes the path where the log file should be saved. I wrote to this file the train/val/test perplexity only if a path was given / the flag was given. I saved the log files in the results folder.
+- I added a table_creator.py file in the results folder which creates the tables and plots. It takes as input the log files. Example call (from the results folder): python3 table_creator.py --log_file0 dropout0.log --log_file02 dropout02.log --log_file04 dropout04.log --logfile06 dropout06.log --logfile08 dropout08.log
+- All the tables and plots are also saved in the results folder.
+- To output the samples with models model08.pt and model04.pt I adapted the script generate.sh.
 
